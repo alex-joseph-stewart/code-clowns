@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <main>
-      
+        <Image src={}/>
       </main>
     </div>
   );

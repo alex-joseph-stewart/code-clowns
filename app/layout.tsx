@@ -3,15 +3,7 @@ import { Geist, Geist_Mono, Sancreek } from 'next/font/google';
 import Image from 'next/image';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 const sancreek = Sancreek({
   variable: '--font-sancreek',
