@@ -2,13 +2,21 @@
 
 @theme {
   --color-primary: #0f3181;
+  --color-secondary: #74cee8;
   --default-font-family: 'Recoleta';
 }
-
+/* allows us to alter the styles - unlike with utility classes */
 .nav-list li {
-  @apply font-sans text-white;
+  color: white;
+  font-family: sans-serif;
   font-family: var(--font-sancreek);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-shadow: 25px 25px black;
+}
+
+.nav-list li:hover {
+  color: var(--color-secondary);
+  cursor: pointer;
 }
