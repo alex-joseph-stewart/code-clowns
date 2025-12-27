@@ -8,15 +8,18 @@
 /* allows us to alter the styles - unlike with utility classes */
 .nav-list li {
   color: white;
-  font-family: sans-serif;
   font-family: var(--font-sancreek);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-shadow: 25px 25px black;
+  text-shadow: 2px 2px black;
 }
 
 .nav-list li:hover {
   color: var(--color-secondary);
   cursor: pointer;
+}
+
+.font-display {
+  font-family: var(--font-sancreek);
 }
