@@ -3,8 +3,6 @@ import { Geist, Geist_Mono, Sancreek } from 'next/font/google';
 import Image from 'next/image';
 import './globals.css';
 
-
-
 const sancreek = Sancreek({
   variable: '--font-sancreek',
   weight: '400',
@@ -23,15 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sancreek.variable} mt-4`}>
+      <body className={`${sancreek.variable} mt-4 bg-primary`}>
         <ul className="nav-list flex justify-around bg-primary  border-t-1-white border-b-1-white">
           <li>
-            <Image
-              src="/logo.svg"
-              alt="logo"
-              width={100}
-              height={100}
-            />
+            <Image src="/logo.svg" alt="logo" width={100} height={100} />
           </li>
           <li>About</li>
           <li>Content</li>
