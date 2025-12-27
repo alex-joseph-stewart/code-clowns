@@ -8,7 +8,7 @@
 /* allows us to alter the styles - unlike with utility classes */
 .nav-list li {
   color: white;
-  font-family: var(--font-sancreek);
+  /* font-family: var(--font-sancreek); */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,6 +20,9 @@
   cursor: pointer;
 }
 
-.font-display {
-  font-family: var(--font-sancreek);
+@layer utilities {
+  .font-display {
+    font-family: var(--font-sancreek);
+    text-shadow: 2px 2px black;
+  }
 }
