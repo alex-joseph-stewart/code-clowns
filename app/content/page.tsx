@@ -11,10 +11,12 @@ export default function ContentLanding() {
         <ContentOpt
           img={contentOptions.writtenContent.img}
           optMsg={contentOptions.writtenContent.optMsg}
+          href="placeholder"
         />
         <ContentOpt
           img={contentOptions.videoContent.img}
           optMsg={contentOptions.videoContent.optMsg}
+          href="/content/videoContent"
         />
       </div>
     </main>
