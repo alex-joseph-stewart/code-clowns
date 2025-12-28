@@ -26,3 +26,23 @@
     text-shadow: 2px 2px black;
   }
 }
+
+@layer components {
+  .redTextBlock {
+    border: 4px solid white;
+    background-color: #c40412;
+    border-radius: 15px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px black;
+  }
+
+  .textBlockFont {
+    font-family: var(--font-sancreek);
+    text-shadow: 2px 2px black;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+  }
+}
