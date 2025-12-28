@@ -7,7 +7,7 @@ export default function ContentLanding() {
       <h2 className="font-display text-center text-secondary text-4xl mt-10">
         What are you interested in checking out?
       </h2>
-      <div className="flex justify-center mt-10">
+      <div className="flex justify-center gap-20 mt-10">
         <ContentOpt
           img={contentOptions.writtenContent.img}
           optMsg={contentOptions.writtenContent.optMsg}

@@ -9,7 +9,7 @@ export default function ContentOpt({
   optMsg: string;
 }) {
   return (
-    <Link href="" className="flex flex-col items-center">
+    <Link href="" className="contentOpt">
       <Image src={img} alt="book" height={500} width={500}></Image>
       <div className="redTextBlock">
         <p className="textBlockFont">{optMsg}</p>
