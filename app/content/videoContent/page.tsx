@@ -2,10 +2,12 @@ import {
   S3Client,
   ListObjectsV2Command,
   GetObjectCommand,
+  HeadObjectCommand,
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
-import ShortBox from '@/app/components/shortBox';
+import VidBox from '@/app/components/vidBox';
+import ContentBox from '@/app/components/contentBox';
 
 const s3Client = new S3Client({
   region: process.env.AWS_REGION!,
@@ -28,10 +30,17 @@ async function getVideos() {
   //create signed URLs for each video object
   const signedUrls = await Promise.all(
     vidObjects.map(async (vidObj) => {
+      //Get metadata for current object
+      const headCommand = new HeadObjectCommand({
+        Bucket: process.env.S3_BUCKET_NAME,
+        Key: vidObj.Key,
+      });
+      const vidMetaData = await s3Client.send(headCommand);
       //GetObjectCommand retrieves the object we are creating the current signed url for
       return {
-        key: vidObj.Key,
-        url: await getSignedUrl(
+        title: vidMetaData.Metadata!.title,
+        descript: null,
+        signedUrl: await getSignedUrl(
           s3Client,
           new GetObjectCommand({
             Bucket: process.env.S3_BUCKET_NAME,
@@ -50,16 +59,7 @@ export default async function VideoContent() {
 
   return (
     <div>
-      {videos?.map((vid) => {
-        return (
-          <ShortBox
-            key={vid.key}
-            signedUrl={vid.url}
-            descript="A brief description about this video!"
-            shortTitle="A Short Title"
-          />
-        );
-      })}
+      <ContentBox contentType="Shorts" content={videos} />;
     </div>
   );
 }
