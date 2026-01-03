@@ -9,14 +9,14 @@ export default function ContentBox({
   content: ContentProps[];
 }) {
   return (
-    <div>
-      <div>{contentType}</div>
+    <div className="w-[50vw]">
+      <div className="redTextBlock textBlockFont mx-auto">{contentType}</div>
       {content.map((item, index) => {
         return (
           <VidBox
             key={index}
-            title={item.title}
-            descript={item.descript}
+            title={item.title} //ultimately item.title
+            descript={item.descript} //ultimately item.descript
             signedUrl={item.signedUrl}
           />
         );
