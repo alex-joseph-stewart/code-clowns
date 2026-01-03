@@ -1,12 +1,14 @@
-export default function ShortBox({
-  signedUrl,
-  descript,
-  shortTitle,
-}: {
+export type ContentProps = {
   signedUrl: string;
   descript: string;
   shortTitle: string;
-}) {
+};
+
+export default function VidBox({
+  signedUrl,
+  descript,
+  shortTitle,
+}: ContentProps) {
   return (
     <figure className="inline-flex flex-col justify-center items-center">
       <video
