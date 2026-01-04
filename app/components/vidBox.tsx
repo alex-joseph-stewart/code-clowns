@@ -3,6 +3,7 @@ export type ContentProps = {
   descript: string | null;
   title: string;
   vidWidth: number;
+  posterURL: string | undefined;
 };
 
 export default function VidBox({
@@ -10,6 +11,7 @@ export default function VidBox({
   descript,
   title,
   vidWidth,
+  posterURL,
 }: ContentProps) {
   return (
     <figure className="inline-flex flex-col justify-center items-center">
@@ -17,6 +19,7 @@ export default function VidBox({
         src={signedUrl}
         width={vidWidth}
         className="vidBox"
+        poster={posterURL}
         controls
       ></video>
       <h2 className="textBlockFont text-xl">{title}</h2>

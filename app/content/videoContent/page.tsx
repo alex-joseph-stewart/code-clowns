@@ -36,11 +36,22 @@ async function getVideos(prefix: 'shorts' | 'longform', vidWidth: number) {
         Key: vidObj.Key,
       });
       const vidMetaData = await s3Client.send(headCommand);
+      console.log('Vidmetadata:', vidMetaData);
       //GetObjectCommand retrieves the object we are creating the current signed url for
       return {
         title: vidMetaData.Metadata!.title,
         descript: null,
         vidWidth: vidWidth,
+        posterURL: vidMetaData.Metadata?.thumbnail
+          ? await getSignedUrl(
+              s3Client,
+              new GetObjectCommand({
+                Bucket: process.env.S3_BUCKET_NAME,
+                Key: vidMetaData.Metadata.thumbnail,
+              }),
+              { expiresIn: 3600 }
+            )
+          : undefined,
         signedUrl: await getSignedUrl(
           s3Client,
           new GetObjectCommand({

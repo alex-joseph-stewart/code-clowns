@@ -11,17 +11,20 @@ export default function ContentBox({
   return (
     <div className="w-[50vw]">
       <div className="redTextBlock textBlockFont mx-auto">{contentType}</div>
-      {content.map((item, index) => {
-        return (
-          <VidBox
-            key={index}
-            title={item.title} //ultimately item.title
-            descript={item.descript} //ultimately item.descript
-            signedUrl={item.signedUrl}
-            vidWidth={item.vidWidth}
-          />
-        );
-      })}
+      <div className="flex justify-center flex-wrap">
+        {content.map((item, index) => {
+          return (
+            <VidBox
+              key={index}
+              title={item.title}
+              descript={item.descript}
+              signedUrl={item.signedUrl}
+              vidWidth={item.vidWidth}
+              posterURL={item.posterURL}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
