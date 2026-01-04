@@ -17,10 +17,10 @@ const s3Client = new S3Client({
   },
 });
 
-async function getVideos() {
+async function getVideos(prefix: 'shorts' | 'longform') {
   const command = new ListObjectsV2Command({
     Bucket: process.env.S3_BUCKET_NAME,
-    Prefix: 'shorts/',
+    Prefix: prefix,
   });
   const response = await s3Client.send(command);
   console.log('Response Contents:', response.Contents);
@@ -55,11 +55,13 @@ async function getVideos() {
 }
 
 export default async function VideoContent() {
-  const videos = await getVideos();
+  const shorts = await getVideos('shorts');
+  const longForm = await getVideos('longform');
 
   return (
-    <div>
-      <ContentBox contentType="Shorts" content={videos} />;
+    <div className="flex">
+      <ContentBox contentType="Long-form" content={longForm} />
+      <ContentBox contentType="Shorts" content={shorts} />;
     </div>
   );
 }
