@@ -59,9 +59,14 @@ export default async function VideoContent() {
   const longForm = await getVideos('longform');
 
   return (
-    <div className="flex">
-      <ContentBox contentType="Long-form" content={longForm} />
-      <ContentBox contentType="Shorts" content={shorts} />;
+    <div>
+      <h2 className="pageHeader">
+        Here are some highlights from the past year...
+      </h2>
+      <div className="flex">
+        <ContentBox contentType="Long-form" content={longForm} />
+        <ContentBox contentType="Shorts" content={shorts} />;
+      </div>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { contentOptions } from './data';
 export default function ContentLanding() {
   return (
     <main>
-      <h2 className="font-display text-center text-secondary text-4xl mt-10">
+      <h2 className="font-display pageHeader">
         What are you interested in checking out?
       </h2>
       <div className="flex justify-center gap-20 mt-10">
