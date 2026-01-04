@@ -8,15 +8,62 @@
 /* allows us to alter the styles - unlike with utility classes */
 .nav-list li {
   color: white;
-  font-family: sans-serif;
-  font-family: var(--font-sancreek);
+  /* font-family: var(--font-sancreek); */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-shadow: 25px 25px black;
+  text-shadow: 2px 2px black;
 }
 
 .nav-list li:hover {
   color: var(--color-secondary);
   cursor: pointer;
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-sancreek);
+    text-shadow: 2px 2px black;
+  }
+}
+
+@layer components {
+  .redTextBlock {
+    border: 4px solid white;
+    background-color: #c40412;
+    border-radius: 15px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px black;
+  }
+  /* "contentOpt flex flex-col items-center w-100" */
+  .contentOpt {
+    border: 4px solid white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35vw;
+    padding-bottom: 25px;
+
+    .contentOpt:hover {
+      border: 4px solid var(--color-secondary);
+      border-radius: 15px;
+    }
+  }
+
+  .textBlockFont {
+    font-family: var(--font-sancreek);
+    text-shadow: 2px 2px black;
+    color: white;
+    font-size: 33px;
+    text-align: center;
+  }
+
+  .vidBox {
+    margin: 10px;
+    border-radius: 15px;
+    border: white solid 5px;
+  }
 }
