@@ -17,7 +17,7 @@ const s3Client = new S3Client({
   },
 });
 
-async function getVideos(prefix: 'shorts' | 'longform') {
+async function getVideos(prefix: 'shorts' | 'longform', vidWidth: number) {
   const command = new ListObjectsV2Command({
     Bucket: process.env.S3_BUCKET_NAME,
     Prefix: prefix,
@@ -40,6 +40,7 @@ async function getVideos(prefix: 'shorts' | 'longform') {
       return {
         title: vidMetaData.Metadata!.title,
         descript: null,
+        vidWidth: vidWidth,
         signedUrl: await getSignedUrl(
           s3Client,
           new GetObjectCommand({
@@ -55,8 +56,8 @@ async function getVideos(prefix: 'shorts' | 'longform') {
 }
 
 export default async function VideoContent() {
-  const shorts = await getVideos('shorts');
-  const longForm = await getVideos('longform');
+  const shorts = await getVideos('shorts', 200);
+  const longForm = await getVideos('longform', 500);
 
   return (
     <div>

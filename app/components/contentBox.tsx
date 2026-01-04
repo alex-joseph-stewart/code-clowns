@@ -18,6 +18,7 @@ export default function ContentBox({
             title={item.title} //ultimately item.title
             descript={item.descript} //ultimately item.descript
             signedUrl={item.signedUrl}
+            vidWidth={item.vidWidth}
           />
         );
       })}
