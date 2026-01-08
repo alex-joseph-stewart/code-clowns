@@ -10,7 +10,12 @@ export default function AboutMeOpt({
   return (
     <div className="contentOpt">
       <button>
-        <Image src={src} alt={`Image of ${name}`}></Image>
+        <Image
+          src={src}
+          alt={`Image of ${name}`}
+          width={100}
+          height={250}
+        ></Image>
         <h2 className="redTextBlock">{name}</h2>
       </button>
     </div>

@@ -30,7 +30,9 @@ export default function RootLayout({
                 <Image src="/logo.svg" alt="logo" width={100} height={100} />
               </Link>
             </li>
-            <li>About</li>
+            <li>
+              <Link href={'/about'}>About</Link>
+            </li>
             <li>
               <Link href="/content">Content</Link>
             </li>
