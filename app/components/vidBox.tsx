@@ -18,7 +18,7 @@ export default function VidBox({
       <video
         src={signedUrl}
         width={vidWidth}
-        className="vidBox"
+        className="vidImgBox"
         poster={posterURL}
         controls
       ></video>

@@ -50,7 +50,7 @@ export default async function About() {
   return (
     <div>
       <h2 className="pageHeader">Who would you like to get to know?</h2>
-      <div>
+      <div className="flex justify-around">
         {photos.map((photo) => (
           <AboutMeOpt name={photo.name} src={photo.signedUrl} key={photo.key} />
         ))}

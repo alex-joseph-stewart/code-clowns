@@ -8,15 +8,16 @@ export default function AboutMeOpt({
   src: string;
 }) {
   return (
-    <div className="contentOpt">
+    <div className="w-half">
       <button>
         <Image
           src={src}
           alt={`Image of ${name}`}
-          width={100}
-          height={250}
+          width={200}
+          height={500}
+          className="vidImgBox"
         ></Image>
-        <h2 className="redTextBlock">{name}</h2>
+        <h2 className="redTextBlock textBlockFont w-full">{name}</h2>
       </button>
     </div>
   );
