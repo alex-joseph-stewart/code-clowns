@@ -9,6 +9,8 @@ import {
 
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
+import AboutClient from './AboutClient';
+
 const client = new S3Client({
   region: process.env.AWS_REGION!,
   credentials: {
@@ -19,12 +21,11 @@ const client = new S3Client({
 
 async function getPhotos() {
   const codeClowns = [
-    { name: 'Alex Stewart', key: 'miscPhotos/alexTechHeadshot.jpg' },
-    { name: 'Sam LaRiviere', key: 'miscPhotos/samtechheadshot.jpeg' },
+    { name: 'Alex Stewart', key: 'headshots/alexTechHeadshot.jpg' },
+    { name: 'Sam LaRiviere', key: 'headshots/samtechheadshot.jpeg' },
   ];
 
   //grab signedURL for each object
-  //! need to update this - don't need metadata. can pass name in as prop
   const signedImgUrls = await Promise.all(
     codeClowns.map(async (img) => {
       return {
@@ -41,20 +42,10 @@ async function getPhotos() {
       };
     })
   );
-  console.log(`signedImgUrls: ${signedImgUrls}`);
   return signedImgUrls;
 }
 
 export default async function About() {
   const photos = await getPhotos();
-  return (
-    <div>
-      <h2 className="pageHeader">Who would you like to get to know?</h2>
-      <div className="flex justify-around">
-        {photos.map((photo) => (
-          <AboutMeOpt name={photo.name} src={photo.signedUrl} key={photo.key} />
-        ))}
-      </div>
-    </div>
-  );
+  return <AboutClient photos={photos} />;
 }
