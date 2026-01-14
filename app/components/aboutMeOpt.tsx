@@ -3,13 +3,15 @@ import Image from 'next/image';
 export default function AboutMeOpt({
   name,
   src,
+  onClick,
 }: {
   name: string;
   src: string;
+  onClick: () => void;
 }) {
   return (
     <div className="w-half">
-      <button>
+      <button onClick={onClick}>
         <Image
           src={src}
           alt={`Image of ${name}`}

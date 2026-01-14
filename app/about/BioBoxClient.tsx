@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import type { bio } from '@/lib/loadBio';
 
-export default function BioBoxClient({ bios }) {
-  const [selected, setSelected] = useState('');
+export default function BioBoxClient({ bio }: bio) {
+  const [selected, setSelected] = useState<'alex' | 'sam' | ''>('');
 
-  return <div></div>;
+  return <div>{bio}</div>;
 }

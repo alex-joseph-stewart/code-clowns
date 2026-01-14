@@ -10,6 +10,7 @@ import {
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
 import AboutClient from './AboutClient';
+import { loadBio, type Slug, type Bio } from '@/lib/loadBio';
 
 const client = new S3Client({
   region: process.env.AWS_REGION!,
@@ -19,16 +20,24 @@ const client = new S3Client({
   },
 });
 
-async function getPhotos() {
-  const codeClowns = [
-    { name: 'Alex Stewart', key: 'headshots/alexTechHeadshot.jpg' },
-    { name: 'Sam LaRiviere', key: 'headshots/samtechheadshot.jpeg' },
-  ];
+type Person = { slug: Slug; name: string; key: string };
 
+const codeClowns: Person[] = [
+  { slug: 'alex', name: 'Alex Stewart', key: 'headshots/alexTechHeadshot.jpg' },
+  { slug: 'sam', name: 'Sam LaRiviere', key: 'headshots/samtechheadshot.jpeg' },
+];
+
+const bios = {
+  alex: loadBio('alex'),
+  sam: loadBio('sam'),
+};
+
+async function getPhotos() {
   //grab signedURL for each object
   const signedImgUrls = await Promise.all(
     codeClowns.map(async (img) => {
       return {
+        slug: img.slug,
         name: img.name,
         key: img.key,
         signedUrl: await getSignedUrl(
@@ -47,5 +56,5 @@ async function getPhotos() {
 
 export default async function About() {
   const photos = await getPhotos();
-  return <AboutClient photos={photos} />;
+  return <AboutClient photos={photos} bios={bios} />;
 }

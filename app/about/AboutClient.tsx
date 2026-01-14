@@ -1,13 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import AboutMeOpt from '../components/aboutMeOpt';
+import type { Slug, Bio } from '@/lib/loadBio';
 
-type Photo = { name: string; key: string; signedUrl: string };
+type Photo = { name: string; key: string; signedUrl: string; slug: Slug };
 
-export default function AboutClient({ photos }: { photos: Photo[] }) {
+export default function AboutClient({
+  photos,
+  bios,
+}: {
+  photos: Photo[];
+  bios: Record<Slug, Bio>;
+}) {
   const [hovered, setHovered] = useState<string | null>(null);
+  const dialogueRef = useRef<HTMLDialogElement | null>(null);
+  const [selected, setSelected] = useState<Slug | null>(null);
+
+  function open(slug: Slug) {
+    setSelected(slug);
+    dialogueRef.current?.showModal();
+  }
+
+  const selectedBio = selected ? bios[selected] : null;
 
   return (
     <div>
@@ -37,10 +53,14 @@ export default function AboutClient({ photos }: { photos: Photo[] }) {
                 name={photo.name}
                 src={photo.signedUrl}
                 key={photo.key}
+                onClick={() => open(photo.slug)}
               />
             </div>
           );
         })}
+        <dialog ref={dialogueRef}>
+          <p>{selectedBio?.bio}</p>
+        </dialog>
       </div>
     </div>
   );
