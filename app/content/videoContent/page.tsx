@@ -6,7 +6,6 @@ import {
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
-import VidBox from '@/app/components/vidBox';
 import ContentBox from '@/app/components/contentBox';
 
 const s3Client = new S3Client({
@@ -23,7 +22,7 @@ async function getVideos(prefix: 'shorts' | 'longform', vidWidth: number) {
     Prefix: prefix,
   });
   const response = await s3Client.send(command);
-  console.log('Response Contents:', response.Contents);
+
   //first element is not an actual video object
   const vidObjects = response.Contents!.slice(1);
 

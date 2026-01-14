@@ -3,17 +3,12 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import AboutMeOpt from '../components/aboutMeOpt';
-import type { Slug, Bio } from '@/lib/loadBio';
+import type { Slug } from './types';
+import { bios } from './bios';
 
 type Photo = { name: string; key: string; signedUrl: string; slug: Slug };
 
-export default function AboutClient({
-  photos,
-  bios,
-}: {
-  photos: Photo[];
-  bios: Record<Slug, Bio>;
-}) {
+export default function AboutClient({ photos }: { photos: Photo[] }) {
   const [hovered, setHovered] = useState<string | null>(null);
   const dialogueRef = useRef<HTMLDialogElement | null>(null);
   const [selected, setSelected] = useState<Slug | null>(null);

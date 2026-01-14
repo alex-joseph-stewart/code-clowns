@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${sancreek.variable} mt-4 bg-primary`}>
         <nav>
-          <ul className="font-display nav-list flex justify-around bg-primary  border-t-1 border-white border-b-1 border-white">
+          <ul className="font-display nav-list flex justify-around bg-primary  border-t border-b border-white">
             <li>
               <Link href="/">
                 <Image src="/logo.svg" alt="logo" width={100} height={100} />

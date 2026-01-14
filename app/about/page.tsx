@@ -1,16 +1,8 @@
-import AboutMeOpt from '../components/aboutMeOpt';
-import {
-  S3Client,
-  ListObjectsV2Command,
-  GetObjectCommand,
-  HeadObjectCommandInput,
-  HeadObjectCommand,
-} from '@aws-sdk/client-s3';
-
+import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+import { Slug } from './types';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
 import AboutClient from './AboutClient';
-import { loadBio, type Slug, type Bio } from '@/lib/loadBio';
 
 const client = new S3Client({
   region: process.env.AWS_REGION!,
@@ -27,10 +19,10 @@ const codeClowns: Person[] = [
   { slug: 'sam', name: 'Sam LaRiviere', key: 'headshots/samtechheadshot.jpeg' },
 ];
 
-const bios = {
-  alex: loadBio('alex'),
-  sam: loadBio('sam'),
-};
+// const bios = {
+//   alex: loadBio('alex'),
+//   sam: loadBio('sam'),
+// };
 
 async function getPhotos() {
   //grab signedURL for each object
@@ -56,5 +48,5 @@ async function getPhotos() {
 
 export default async function About() {
   const photos = await getPhotos();
-  return <AboutClient photos={photos} bios={bios} />;
+  return <AboutClient photos={photos} />;
 }
