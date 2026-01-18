@@ -53,10 +53,24 @@ export default function AboutClient({ photos }: { photos: Photo[] }) {
             </div>
           );
         })}
-        <dialog ref={dialogueRef}>
+        
+      </div>
+      <dialog   className="
+    fixed inset-0 m-auto
+    w-[min(700px,92vw)]
+    max-h-[80vh]
+    overflow-auto
+    bg-gray-100
+    rounded-2xl
+    border-4
+    border-black
+    
+    p-4
+  "ref={dialogueRef} >
+    <h1>{selectedBio?.name}</h1>
+    <h2>{selectedBio?.title}</h2>
           <p>{selectedBio?.bio}</p>
         </dialog>
-      </div>
     </div>
   );
 }
